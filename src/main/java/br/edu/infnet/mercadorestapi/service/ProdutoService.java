@@ -40,4 +40,12 @@ public class ProdutoService {
         }
     }
 
+    public void updateProduto(Produto novoProduto, Integer id) {
+        Optional<Produto> produto = produtoRepository.findById(id);
+        if (produto.isPresent()) {
+            novoProduto.setId(id);
+            produtoRepository.save(novoProduto);
+        }
+    }
+
 }
