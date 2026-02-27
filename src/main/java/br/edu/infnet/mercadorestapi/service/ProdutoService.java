@@ -33,4 +33,11 @@ public class ProdutoService {
         produtoRepository.save(produto);
     }
 
+    public void deleteProduto(Integer id){
+        Optional<Produto> produto = produtoRepository.findById(id);
+        if (produto.isPresent()) {
+            produtoRepository.deleteById(id);
+        }
+    }
+
 }

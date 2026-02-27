@@ -38,5 +38,14 @@ public class ProdutoController {
         return "Produto Enviado";
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> excluirProduto(@PathVariable Integer id) {
+        Produto produto = produtoService.findById(id);
+        if(produto == null) {
+            return new ResponseEntity<>("ERROR: Produto não encontrado",HttpStatus.NOT_FOUND);
+        }
+        produtoService.deleteProduto(id);
+        return new ResponseEntity<>(produto, HttpStatus.OK);
+    }
 
 }
