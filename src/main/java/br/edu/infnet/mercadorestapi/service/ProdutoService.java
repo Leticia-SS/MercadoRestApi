@@ -29,4 +29,8 @@ public class ProdutoService {
         return produto.orElse(null); //if simplificado
     }
 
+    public void addProduto(Produto produto){
+        produtoRepository.save(produto);
+    }
+
 }
